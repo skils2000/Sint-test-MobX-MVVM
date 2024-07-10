@@ -43,7 +43,11 @@ const AutocompleteControl: React.FC<AutocompleteControlProps> = ({ store }) => {
                 onClick={() => handleSelect(suggestion)}
               >
                 {suggestion.name}, {suggestion.fullName}{" "}
-                <img src={suggestion.flag} height={16} />
+                <img
+                  src={suggestion.flag}
+                  height={16}
+                  alt={"Флаг " + suggestion.name}
+                />
               </div>
             ))}
         </div>

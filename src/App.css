@@ -1,0 +1,17 @@
+main {
+  padding: 20px;
+}
+
+.buttonControlsArticle {
+  display: flex;
+  justify-content: space-around;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.example {
+    display: flex;
+    gap: 8px;
+}

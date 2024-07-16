@@ -6,9 +6,17 @@ export interface CountryInfo {
   flag: string;
 }
 
-export function getCountryByName(countryName: string): Promise<CountryInfo[]> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, getRandom(100, 800));
+export function getCountryByName(
+  countryName: string,
+  signal: AbortSignal
+): Promise<CountryInfo[]> {
+  return new Promise((resolve, rejects) => {
+    const timeoutId = setTimeout(resolve, getRandom(100, 800));
+    
+    signal.addEventListener("abort", () => {
+      clearTimeout(timeoutId);
+      rejects(new DOMException("Request aborted", "AbortError"));
+    });
   }).then(() => {
     if (typeof countryName !== "string" || !countryName) {
       return [];
